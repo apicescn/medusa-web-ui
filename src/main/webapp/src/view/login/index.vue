@@ -10,18 +10,18 @@
       >
         <a-form-item>
           <img class="logo" src="@/assets/image/logo.png" />
-          <div class="head">Medusa Admin</div>
-          <div class="desc">通用RBAC统一基础应用平台，构建企业基础建设平台</div>
+          <div class="head">数字化中心</div>
+          <div class="desc">基建RBAC平台</div>
         </a-form-item>
         <a-form-item>
           <a-input
-            placeholder="账 户 : admin"
-            v-model:value="formState.username"
+            placeholder="输 入 账 户"
+            v-model:value="formState.loginName"
           />
         </a-form-item>
         <a-form-item>
           <a-input
-            placeholder="密 码 : admin"
+            placeholder="输 入 密 码"
             type="password"
             v-model:value="formState.password"
           />
@@ -74,15 +74,15 @@ export default {
 
     // 登录参数
     const formState = reactive({
-      username: "admin",
-      password: "123456",
+      loginName: "",
+      password: "",
       // captchaKey: "key",
       // captchaCode: "code",
       // captchaImage: "image",
     });
 
     const formRules = {
-      username: [{ required: true, message: "请输入账户", trigger: "blur" }],
+      loginName: [{ required: true, message: "请输入账户", trigger: "blur" }],
       password: [{ required: true, message: "请输入密码", trigger: "blur" }],
     };
 
@@ -98,6 +98,7 @@ export default {
 
     // 登录验证
     const onSubmit = () => {
+      debugger
       formRef.value
         .validate()
         .then(async () => {
@@ -106,7 +107,7 @@ export default {
           load.value = false;
           notification['success']({
             message: "登录成功",
-            description: "美 杜 莎 仪 式, 欢 迎 回 来.",
+            description: "欢迎.",
           });
           await router.push("/");
         })
