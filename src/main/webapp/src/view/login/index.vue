@@ -10,8 +10,8 @@
       >
         <a-form-item>
           <img class="logo" src="@/assets/image/logo.png" />
-          <div class="head">数字化中心</div>
-          <div class="desc">基建RBAC平台</div>
+          <div class="head">Medusa Admin</div>
+          <div class="desc">打造通用基础建设，构建数字化技术中台</div>
         </a-form-item>
         <a-form-item>
           <a-input
@@ -26,25 +26,6 @@
             v-model:value="formState.password"
           />
         </a-form-item>
-<!--        <a-form-item class="captchaKey">-->
-<!--          <a-input v-model:value="formState.captchaKey" />-->
-<!--        </a-form-item>-->
-<!--        <a-form-item>-->
-<!--          <a-row :gutter="10">-->
-<!--            <a-col :span="13">-->
-<!--              <a-input v-model:value="formState.captchaCode" />-->
-<!--            </a-col>-->
-<!--            <a-col :span="11">-->
-<!--              <img-->
-<!--                class="captchaImage"-->
-<!--                @click="refreshCaptcha"-->
-<!--                style="margin-top: -3px"-->
-<!--                :src="formState.captchaImage"-->
-<!--                alt="连接失败"-->
-<!--              />-->
-<!--            </a-col>-->
-<!--          </a-row>-->
-<!--        </a-form-item>-->
         <a-form-item>
           <a-checkbox :checked="true"> 记住我 </a-checkbox>
           <a class="forgot" href=""> 忘记密码 </a>
@@ -98,7 +79,6 @@ export default {
 
     // 登录验证
     const onSubmit = () => {
-      debugger
       formRef.value
         .validate()
         .then(async () => {
@@ -112,6 +92,7 @@ export default {
           await router.push("/");
         })
         .catch((error) => {
+          debugger
           notification['error']({
             message: "登录失败",
             description: error,
